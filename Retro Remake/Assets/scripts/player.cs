@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    public bullet bulletPrefab;
+
     public float thrustSpeed = 1.0f;
     public float turnSpeed = 1.0f;
 
@@ -30,6 +32,14 @@ public class player : MonoBehaviour
         {
             _turnDirection = 0.0f;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+        
+            
+        
     }
 
     private void FixedUpdate()
@@ -49,7 +59,11 @@ public class player : MonoBehaviour
         }
     }
 
-
+    private void Shoot()
+    {
+      bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, this.transform.rotation);
+      bullet.Project(this.transform.up);
+    }
 
 
 
