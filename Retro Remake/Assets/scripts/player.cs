@@ -5,12 +5,15 @@ public class player : MonoBehaviour
 {
     public bullet bulletPrefab;
 
+    public float reverseThrustSpeed = -1.0f;
     public float thrustSpeed = 1.0f;
     public float turnSpeed = 1.0f;
 
     private Rigidbody2D _rigidbody;
 
     private bool _thrusting;
+
+    private bool _revThrusting;
 
     private float _turnDirection;
 
@@ -22,6 +25,7 @@ public class player : MonoBehaviour
     private void Update()
     {
         _thrusting = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        _revThrusting = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
@@ -49,6 +53,12 @@ public class player : MonoBehaviour
             _rigidbody.AddForce(this.transform.up * this.thrustSpeed);
 
         }
+
+        if (_revThrusting) 
+        {
+            _rigidbody.AddForce(this.transform.up * this.reverseThrustSpeed);
+        }
+
 
         if (_turnDirection != 0.0f)
         {
