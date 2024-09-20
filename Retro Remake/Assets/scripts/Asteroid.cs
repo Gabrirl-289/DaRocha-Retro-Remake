@@ -59,8 +59,11 @@ public class Asteroid : MonoBehaviour
     private void CreateSplit()
     {
         Vector2 position = this.transform.position;
+        position += Random.insideUnitCircle * 0.5f;
 
-        Asteroid half = Instantiate(this, );
+        Asteroid half = Instantiate(this, position, this.transform.rotation);
+        half.size = this.size * 0.5f;
+        half.setTrajectory(Random.insideUnitCircle.normalized * this.speed);
     }
 
 }      
