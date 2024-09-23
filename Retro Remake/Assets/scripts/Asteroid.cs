@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Asteroid : MonoBehaviour
@@ -51,8 +50,8 @@ public class Asteroid : MonoBehaviour
                 CreateSplit();
                 CreateSplit();
             }
-
             Destroy(this.gameObject);
+            FindObjectOfType<GameManager>().AsteroidDestroyed(this);
         }
     }
 
