@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public TMPro.TMP_Text scoreText;
 
     public TMPro.TMP_Text liveText;
+
 
 
     public int score = 0;
@@ -72,8 +74,9 @@ public class GameManager : MonoBehaviour
     {
         this.lives = 3;
         this.score = 0;
-
+       
         Invoke(nameof(Respawn), this.respawnTime);
+        SceneManager.LoadScene("gameover");
     }
     void Update()
     {
