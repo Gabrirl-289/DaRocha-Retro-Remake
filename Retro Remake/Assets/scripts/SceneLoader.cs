@@ -12,9 +12,13 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Asteroids");
     }
 
+    public void titleBack()
+    {
+        SceneManager.LoadScene("Title");
+    }
     //public void LoadSettings("settings")
     //{
 
-      //}
+    //}
 
 }
